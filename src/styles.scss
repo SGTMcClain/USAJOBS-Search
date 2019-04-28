@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+// Clarity Dependency SCSS
+@import "../node_modules/@clr/ui/src/utils/dependencies.clarity"; // Includes light theme
+
+@import "../node_modules/@clr/ui/src/utils/theme.dark.clarity"; // Overwrites with dark theme
+
+// Clarity Component SCSS
+@import "../node_modules/@clr/ui/src/utils/components.clarity";
