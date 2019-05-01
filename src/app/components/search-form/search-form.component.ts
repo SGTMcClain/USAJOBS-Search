@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchQuery } from '../../services/search-query/search-query';
 import { SearchResultsBasic } from '../../models/searchResultsBasic/search-results-basic';
-import { Secret } from '../../../../secret'
+// import { Secret } from '../../../../secret'
 import { SearchQueryType, PositionType, SecurityClearanceType, SortDirection } from '../../eums/searchQuerys.enum'
 import { SearchQueryModel } from 'src/app/models/searchQueryModel/search-query.model';
+import { environment } from 'src/environments/environment';
 
 //TODO: Break out the results from the search page
 
@@ -18,7 +19,7 @@ export class SearchFormComponent implements OnInit{
   public searchResultComplete:any;
   public searchResults:any
   public resultsList: SearchResultsBasic[] = new Array;
-  private secret: Secret = new Secret;
+  // private secret: Secret = new Secret;
   private BASE_URL:string = 'https://data.usajobs.gov/api/';
   private searchQueryModel = new SearchQueryModel();
   public keywordFromSS:string;
@@ -87,9 +88,9 @@ export class SearchFormComponent implements OnInit{
       // 'https://data.usajobs.gov/api/search?Keyword='+ keyword + "&LocationName" + location + "&ResultsPerPage=50", 
       {
         headers: {
-          "Authorization-Key" : this.secret.usajobsAuthKey,
-          "Host": this.secret.usajobsHost,
-          "User-Agent": this.secret.usajobsUserAgent
+          "Authorization-Key" : environment.API_KEY,
+          "Host": environment.API_HOST,
+          "User-Agent": environment.API_USER_AGENT
         }
       },
 
