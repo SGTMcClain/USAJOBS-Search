@@ -13,7 +13,7 @@ import { SearchQueryModel } from 'src/app/models/searchQueryModel/search-query.m
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss']
 })
-export class SearchFormComponent {
+export class SearchFormComponent implements OnInit{
   
   public searchResultComplete:any;
   public searchResults:any
@@ -21,10 +21,21 @@ export class SearchFormComponent {
   private secret: Secret = new Secret;
   private BASE_URL:string = 'https://data.usajobs.gov/api/';
   private searchQueryModel = new SearchQueryModel();
+  public keywordFromSS:string;
+  public locationFromSS:string;
   
   //TODO: searchQuery is the service that will be used in the future
   constructor(private httpClient: HttpClient, private searchQuery: SearchQuery) { }
 
+  ngOnInit(){
+    if(sessionStorage != null){
+      let lastQuery:SearchQueryModel = new SearchQueryModel();
+      lastQuery = JSON.parse(sessionStorage.getItem("lastSearchQuery"))
+      this.keywordFromSS = lastQuery.keyword;
+      this.locationFromSS = lastQuery.location;
+      console.log(this.keywordFromSS);
+    }
+  }
 
   /**
    * On Submit
