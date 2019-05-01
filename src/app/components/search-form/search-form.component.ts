@@ -34,6 +34,7 @@ export class SearchFormComponent implements OnInit{
       this.keywordFromSS = lastQuery.keyword;
       this.locationFromSS = lastQuery.location;
       console.log(this.keywordFromSS);
+      
     }
   }
 
