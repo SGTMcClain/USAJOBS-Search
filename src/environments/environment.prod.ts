@@ -1,3 +1,5 @@
+import * as process from 'process';
+
 export const environment = {
   production: true,
   API_KEY: process.env.usajobsAuthKey,
