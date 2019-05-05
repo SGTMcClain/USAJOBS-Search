@@ -36,6 +36,9 @@ This application uses the USAJobs API.  It was initially set up as a Service in 
 ## Session Storage
 The most recent search details are saved to session storage and loaded on the users return to the session
 
+## UI/UX
+[Clarity Design System] (https://v1.clarity.design/)
+
 ## Files and Usage
 This Angular Application uses:
 - app.component.html: as the base page for angular components header and search-form
