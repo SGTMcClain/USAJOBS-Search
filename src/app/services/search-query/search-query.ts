@@ -1,8 +1,9 @@
-import { Secret } from '../../../../secret';
+// import { Secret } from '../../../../secret';
 import { SearchResultsBasic } from '../../models/searchResultsBasic/search-results-basic';
 import { HttpClient } from '@angular/common/http';
 import { SearchQueryType, PositionType, SecurityClearanceType, SortDirection } from '../../eums/searchQuerys.enum' 
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 // TODO: fix CORS issue when using this service, and implement any improvements from the search-form component
 
@@ -10,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class SearchQuery {
     public keyword: string;
     public location: string;
-    secret: Secret = new Secret();
+    // secret: Secret = new Secret();
     public searchResults:any
     public resultsList: SearchResultsBasic[] = new Array;
 
@@ -32,9 +33,9 @@ export class SearchQuery {
           // 'https://data.usajobs.gov/api/search?Keyword='+ keyword + "&LocationName" + location + "&ResultsPerPage=50", 
           {
             headers: {
-              "Authorization-Key" : this.secret.usajobsAuthKey,
-              "Host": this.secret.usajobsHost,
-              "User-Agent": this.secret.usajobsUserAgent
+              "Authorization-Key" : environment.API_KEY,
+              "Host": environment.API_HOST,
+              "User-Agent": environment.API_USER_AGENT
             }
           },
     
